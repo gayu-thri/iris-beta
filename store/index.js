@@ -38,6 +38,10 @@ const createStore = () => {
 
             forgotPassword({ commit }, { email }) {
                 return auth.sendPasswordResetEmail(email)
+            },
+
+            returnUserDetails() {
+                return auth.currentUser;
             }
         }
     })
