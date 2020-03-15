@@ -7,119 +7,85 @@
                         <strong>Profile</strong>
                     </p>
                     <ul class="menu-list">
-                        <li><a>View Profile</a></li>
-                        <li><a>Edit Profile</a></li>
+                        <li @click="viewX"><a>View Profile</a></li>
+                        <li @click="editX"><a>Edit Profile</a></li>
                     </ul>
-                    <p class="menu-label is-size-6">
-                        <strong>Student</strong>
-                    </p>
-                    <ul class="menu-list">
-                        <li><a>Team Settings</a></li>
-                        <li>
-                            <a class="is-active">Manage Your Team</a>
-                            <ul>
-                                <li><a>Members</a></li>
-                                <li><a>Plugins</a></li>
-                                <li><a>Add a member</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Invitations</a></li>
-                    </ul>
-                    <p class="menu-label is-size-6">
-                        <strong>Faculty</strong>
-                    </p>
-                    <ul class="menu-list">
-                        <li><a>Payments</a></li>
-                        <li><a>Transfers</a></li>
-                        <li><a>Balance</a></li>
-                    </ul>
-                    <p class="menu-label is-size-6">
-                        <strong>Notifications</strong>
-                    </p>
                 </aside>
             </div>
+            
             <div class="column" id="profile">
-                <div class="container">
-                    <div class="media">
-                        <div class="media-content">
-                            <h1 class="is-size-1 is-family-secondary"> {{ userData.name }} &nbsp;
-                                <nuxt-link class="is-size-3 is-hidden-tablet" to="/edit-profile">✏️
-                                </nuxt-link>
-                            </h1>
-                            <div class="content is-size-5 is-family-monospace">
-                                <div class="media">
-                                    <div class="media-left">💂 Gender:</div>
-                                    <div class="media-content">{{ userData.gender }}</div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left"> 📧 Email:</div>
-                                    <div class="media-content">{{ userData.email }}</div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">☎️ Phone:</div>
-                                    <div class="media-content">{{ userData.phone_number }}</div>
+                <template v-if="view">
+                    <div class="container">
+                        <div class="media">
+                            <div class="media-content">
+                                <h1 class="is-size-1 is-family-secondary"> {{ userData.name }} &nbsp;
+                                    <nuxt-link class="is-size-3 is-hidden-tablet" to="/edit-profile">✏️
+                                    </nuxt-link>
+                                </h1>
+                                <div class="content is-size-5 is-family-monospace">
+                                    <div class="media">
+                                        <div class="media-left">📧 Email: </div>
+                                        <div class="media-content">{{ userData.email }}</div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-left">🏢 Department</div>
+                                        <div class="media-content">{{ userData.department }}</div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-left">🏘️ Address:</div>
+                                        <div class="media-content">{{ userData.address }}</div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-left">🎓 Qualification:</div>
+                                        <div class="media-content">{{ userData.qualification }}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="media-right is-hidden-mobile">
-                        <nuxt-link class="is-size-3" to="/edit-profile">✏️</nuxt-link>
-                    </div>
-                </div>            
+                    </div>       
+                </template>
+
+                <template v-else-if="edit">                    
+                    <div class="container">
+                        <div class="media">
+                            <div class="media-content">
+                                <h1 class="is-size-1 is-family-secondary"> {{ userData.name }} &nbsp;
+                                    <nuxt-link class="is-size-3 is-hidden-tablet" to="/edit-profile">✏️
+                                    </nuxt-link>
+                                </h1>
+                                <!-- <div class="content is-size-5 is-family-monospace">
+                                    <div class="media">
+                                        <div class="media-left">💂 Gender:</div>
+                                        <div class="media-content">{{ userData.gender }}</div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-left"> 📧 Email:</div>
+                                        <div class="media-content">{{ userData.email }}</div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-left">☎️ Phone:</div>
+                                        <div class="media-content">{{ userData.phone_number }}</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="media-right is-hidden-mobile">
+                            <nuxt-link class="is-size-3" to="/edit-profile">✏️</nuxt-link>
+                        </div>
+                    </div>     
+                </template>
             </div>
-        </div>    
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-//   * {
-//     transition: all 0.3s ease-in-out;
-//     background: var(--primary);
-//     color: var(--light);
-//   }
-
-//   .is-fullwidth {
-//     width: 100%;
-//   }
-
-//   #profile,
-//   .is-center {
-//     min-height: 100vh;
-//     align-items: center;
-//     justify-content: center;
-//   }
-
-//   .media-content {
-//     max-width: 90vw;
-
-//     h1 {
-//       text-overflow: clip;
-//       color: var(--font2);
-//     }
-//   }
-
-//   .content {
-//     padding-top: 2.5rem;
-//   }
-
-//   .pad {
-//     padding: 1rem;
-//   }
-
-//   .box {
-//     background: var(--tertiary);
-
-//   }
-
-//   .is-underlined {
-//     text-decoration: underline;
-//   }
 
 </style>
 
 <script>
     import firebase from '~/plugins/firebase'
-    import db from '~/plugins/firebase'
+    import { db } from '~/plugins/firebase'
 
     export default {
         data() {
@@ -127,15 +93,44 @@
                 email: '',
                 userData: {
                     name: '',
-                    gender: '',
-                    email: '',
-                    phone_number: ''
-                }
+                    address: '',
+                    department: '',
+                    qualification: '',
+                    dateOfBirth: ''
+                },
+                view: '',
+                edit: ''
             }
         },
 
-        methods: {
+        async mounted() {
+            let ans = db.collection('users').doc('saibalsu@gmail.com').get()
+            .then(res => {
+                console.log(res.data())
+                this.userData.name = res.data().name
+                this.userData.address = res.data().address
+                this.userData.department = res.data().department
+                this.userData.qualification = res.data().qualification
+                this.userData.dateOfBirth = res.data().dateOfBirth
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        },
 
+        layout: 'nav',
+
+        methods: {
+            viewX() {
+               this.view = true
+               this.edit = false
+               console.log("view: "+this.view+" edit: "+this.edit)
+            },
+            editX() {
+                this.edit = true
+                this.view = false
+                console.log("view: "+this.view+" edit: "+this.edit)
+            }
         },
 
         created() {
