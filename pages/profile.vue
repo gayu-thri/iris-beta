@@ -25,10 +25,14 @@
                                 <div class="content is-size-5 is-family-monospace">
                                     <div class="media">
                                         <div class="media-left">📧 Email: </div>
-                                        <div class="media-content">{{ userData.email }}</div>
+                                        <div class="media-content">{{ email }}</div>
                                     </div>
                                     <div class="media">
-                                        <div class="media-left">🏢 Department</div>
+                                        <div class="media-left">🎂 Date of Birth: </div>
+                                        <div class="media-content">{{ userData.dateOfBirth }}</div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-left">🏢 Department: </div>
                                         <div class="media-content">{{ userData.department }}</div>
                                     </div>
                                     <div class="media">
@@ -47,30 +51,46 @@
 
                 <template v-else-if="edit">                    
                     <div class="container">
+                        <Notification :message="msg" v-if="msg" :type="notif" />
                         <div class="media">
                             <div class="media-content">
-                                <h1 class="is-size-1 is-family-secondary"> {{ userData.name }} &nbsp;
-                                    <nuxt-link class="is-size-3 is-hidden-tablet" to="/edit-profile">✏️
-                                    </nuxt-link>
-                                </h1>
-                                <!-- <div class="content is-size-5 is-family-monospace">
-                                    <div class="media">
-                                        <div class="media-left">💂 Gender:</div>
-                                        <div class="media-content">{{ userData.gender }}</div>
+                                <form @submit.prevent="update">
+                                    <h1 class="is-size-1 is-family-secondary">
+                                        <input class="is-size-1 is-family-secondary" type="text" :placeholder='userData.name'
+                                            v-model="newName" />
+                                    </h1>
+                                    <div class="content is-size-5 is-family-monospace">
+                                        <div class="media">
+                                            <div class="media-left">📧 Email: </div>
+                                            <div class="media-content">{{ email }}</div>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left">🎂 Date of Birth: </div>
+                                            <input class="is-size-5 is-family-monospace" type="text" :placeholder='userData.dateOfBirth'
+                                            v-model="newDob" />
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left">🏢 Department: </div>
+                                            <div class="media-content">{{ userData.department }}</div>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left">🏘️ Address:</div>
+                                            <input class="is-size-5 media-content" type="text" :placeholder='userData.address'
+                                            v-model="newAddress" />
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left">🎓 Qualification:</div>
+                                            <div class="media-content">{{ userData.qualification }}</div>
+                                        </div>
+                                        <br>
+                                        <p class="pad">Hint: You can only edit your name, address and date of birth.</p>
+                                        <div class="control">
+                                            <button type="submit"
+                                            class="button is-rounded is-medium is-family-monospace" style="margin-top: 2.5rem;">Submit</button>
+                                        </div>
                                     </div>
-                                    <div class="media">
-                                        <div class="media-left"> 📧 Email:</div>
-                                        <div class="media-content">{{ userData.email }}</div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-left">☎️ Phone:</div>
-                                        <div class="media-content">{{ userData.phone_number }}</div>
-                                    </div>
-                                </div> -->
+                                </form>
                             </div>
-                        </div>
-                        <div class="media-right is-hidden-mobile">
-                            <nuxt-link class="is-size-3" to="/edit-profile">✏️</nuxt-link>
                         </div>
                     </div>     
                 </template>
@@ -86,8 +106,13 @@
 <script>
     import firebase from '~/plugins/firebase'
     import { db } from '~/plugins/firebase'
+    import Notification from '~/components/Notification.vue'
 
     export default {
+        components: {
+            Notification
+        },
+
         data() {
             return {
                 email: '',
@@ -98,8 +123,12 @@
                     qualification: '',
                     dateOfBirth: ''
                 },
-                view: '',
-                edit: ''
+                newAddress: '',
+                newDob: '',
+                newName: '',
+                view: true,
+                edit: '',
+                msg: ''
             }
         },
 
@@ -112,6 +141,7 @@
                 this.userData.department = res.data().department
                 this.userData.qualification = res.data().qualification
                 this.userData.dateOfBirth = res.data().dateOfBirth
+                this.email = res.data().email
             })
             .catch(err => {
                 console.log(err)
@@ -130,6 +160,25 @@
                 this.edit = true
                 this.view = false
                 console.log("view: "+this.view+" edit: "+this.edit)
+            },
+            update() {
+                db.collection('users').doc('saibalsu@gmail.com').update({
+                    address: this.newAddress,
+                    name: this.newName,
+                    dateOfBirth: this.newDob,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(() => {
+                    this.msg = 'Successfully updated new details!'
+                    this.notif = 'is-success'
+                    this.userData.name = this.newName
+                    this.userData.dateOfBirth = this.newDob
+                    this.userData.address = this.newAddress
+                })
+                .catch(err => {
+                    this.notif = 'is-danger'
+                    this.msg = err.message
+                })
             }
         },
 
