@@ -8,6 +8,12 @@ let driver =await new webdriver.Builder()
 
 //await driver.get('https://iris-se.netlify.com/login')
 await driver.get('https://nostalgic-mccarthy-58e272.netlify.com')  // changed UI
+      var millisecondsToWait = 8000;
+setTimeout(function() {
+    // Whatever you want to do after the wait
+}, millisecondsToWait);
+
+    await driver.manage().window().maximize();
 //await driver.findElement(By.name('email')).sendKeys('saibalsu@gmail.com')
 await driver.findElement(By.xpath('//*[@id="__layout"]/div/div/div/div/div/form/div[1]/div/input')).sendKeys('saibalsu@gmail.com')
     await driver.findElement(By.name('password')).sendKeys('password123')
