@@ -7,24 +7,24 @@
                         <strong>Student</strong>
                     </p>
                     <ul class="menu-list">
-                        <li><a>Team Settings</a></li>
-                        <li>
-                            <a class="">Manage Your Team</a>
-                            <ul>
-                                <li><a>Members</a></li>
-                                <li><a>Plugins</a></li>
-                                <li><a>Add a member</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Invitations</a></li>
+                        <li><a>Attendance</a></li>
+                        <li><a>Reports</a></li>
                     </ul>
                     <p class="menu-label is-size-6">
                         <strong>Faculty</strong>
                     </p>
                     <ul class="menu-list">
-                        <li><a>Payments</a></li>
-                        <li><a>Transfers</a></li>
-                        <li><a>Balance</a></li>
+                        <li><a>Attendance</a></li>
+                        <li><a>Marks</a></li>
+                        <li><a>FA Warning</a></li>
+                    </ul>
+                    <p class="menu-label is-size-6">
+                        <strong>Time Table</strong>
+                    </p>
+                    <ul class="menu-list">
+                        <li><a>View Today's Schedule</a></li>
+                        <li><a>My Timetable</a></li>
+                        <li><a>My Class Timetable</a></li>
                     </ul>
                 </aside>
             </div>
@@ -123,7 +123,7 @@
                     phone_number: '',
                     display: '',
                 },
-                
+
             }
         },
 

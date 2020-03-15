@@ -1,21 +1,21 @@
 <template>
   <div class>
-    <div class="columns is-gapless">
+    <div class="columns is-gapless is-vcentered">
       
-      <section class="hero is-dark is-hidden-mobile is-vcentered">
-        <div class="hero-body">
-          <div class="container is-vcentered">
-            <h1 class="title is-family-secondary">
+      <section class="hero is-dark is-hidden-mobile columns is-vcentered">
+        <div class="hero-body columns is-vcentered">
+          <div class="is-vcentered">
+            <h1 class="title has-text-centered is-family-secondary">
               iris
             </h1>
-            <h2 class="subtitle">
+            <h2 class="subtitle has-text-centered">
               A Modern Faculty Dashboard
             </h2>
           </div>
         </div>
       </section>
       
-      <div class="column">
+      <div class="column is-two-thirds">
         <div class="container">
           <h2 class="title is-size-1 has-text-centered">Welcome to Iris!</h2>
 
@@ -24,13 +24,13 @@
           <form @submit.prevent="signIn" class="space is-family-primary">
             <div class="field xspace">
               <div class="control">
-                 <input class="input is-shadowless" name="email" placeholder="Your email ID, please 😄" type="email" v-model="email">
+                 <input class="input is-info is-family-monospace" name="email" placeholder="Your email ID, please 😄" type="email" v-model="email">
               </div>
             </div>
 
             <div class="field">
               <div class="control">
-                <input class="input is-shadowless" name="password" placeholder="Enter your password 🙈" type="password" v-model="password"/>
+                <input class="input is-danger is-family-monospace" name="password" placeholder="Enter your password 🙈" type="password" v-model="password"/>
               </div>
             </div>
 
@@ -38,7 +38,7 @@
               <nuxt-link to="/forgot-password">Forgot Password?</nuxt-link>
             </div>
             <div class="control">
-              <button class="button is-rounded is-medium is-fullwidth login" type="submit">Log In</button>
+              <button class="button is-success is-outlined is-light is-rounded is-medium is-fullwidth login" type="submit">Log In 🔐</button>
             </div>
           </form>
 
