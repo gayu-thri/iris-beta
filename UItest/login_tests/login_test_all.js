@@ -7,7 +7,13 @@ async function log1(){
     .build()
 
     await driver.get('https://nostalgic-mccarthy-58e272.netlify.com')
+  
+      var millisecondsToWait = 8000;
+setTimeout(function() {
+    // Whatever you want to do after the wait
+}, millisecondsToWait);
 
+    await driver.manage().window().maximize();
     await driver.findElement(By.name('email')).sendKeys('saibalsu@gmail.com')
     await driver.findElement(By.name('password')).sendKeys('password123')
 
