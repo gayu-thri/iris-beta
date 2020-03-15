@@ -6,6 +6,12 @@ async function reg(){
     .forBrowser('firefox')
     .build()
     await driver.get('https://nostalgic-mccarthy-58e272.netlify.com/')
+  var millisecondsToWait = 8000;
+setTimeout(function() {
+    // Whatever you want to do after the wait
+}, millisecondsToWait);
+
+    await driver.manage().window().maximize();
     await(await driver.findElement(By.xpath('/html/body/div/div/div/div/div/div/div/div/p/a'))).click() 
 
     await driver.findElement(By.name('email')).sendKeys('prathyu03981@gmail.com')
