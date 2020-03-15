@@ -7,56 +7,61 @@
                         <strong>Student</strong>
                     </p>
                     <ul class="menu-list">
-                        <li><a>Attendance</a></li>
-                        <li><a>Reports</a></li>
+                        <li @click="sAttendanceX"><a>Attendance</a></li>
+                        <li @click="reportsX"><a>Reports</a></li>
                     </ul>
                     <p class="menu-label is-size-6">
                         <strong>Faculty</strong>
                     </p>
                     <ul class="menu-list">
-                        <li><a>Attendance</a></li>
-                        <li><a>Marks</a></li>
-                        <li><a>FA Warning</a></li>
+                        <li @click="fAttendanceX"><a>Attendance</a></li>
+                        <li @click="marksX"><a>Marks</a></li>
+                        <li @click="faX"><a>FA Warning</a></li>
                     </ul>
                     <p class="menu-label is-size-6">
                         <strong>Time Table</strong>
                     </p>
                     <ul class="menu-list">
-                        <li><a>View Today's Schedule</a></li>
-                        <li><a>My Timetable</a></li>
-                        <li><a>My Class Timetable</a></li>
+                        <li @click="tsX"><a>View Today's Schedule</a></li>
+                        <li @click="ttX"><a>My Timetable</a></li>
+                        <li @click="cttX"><a>My Class Timetable</a></li>
                     </ul>
                 </aside>
             </div>
             
-            <div class="column" id="profile">
-                <div class="container">
-                    <div class="media">
-                        <div class="media-content">
-                            <h1 class="is-size-1 is-family-secondary"> {{ userData.name }} &nbsp;
-                                <nuxt-link class="is-size-3 is-hidden-tablet" to="/edit-profile">✏️
-                                </nuxt-link>
-                            </h1>
-                            <div class="content is-size-5 is-family-monospace">
-                                <div class="media">
-                                    <div class="media-left">💂 Gender:</div>
-                                    <div class="media-content">{{ userData.gender }}</div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left"> 📧 Email:</div>
-                                    <div class="media-content">{{ userData.email }}</div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">☎️ Phone:</div>
-                                    <div class="media-content">{{ userData.phone_number }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media-right is-hidden-mobile">
-                        <nuxt-link class="is-size-3" to="/edit-profile">✏️</nuxt-link>
-                    </div>
-                </div>       
+            <div class="column" id="dash">
+
+                <template v-if="sAttendance">
+                    Student Attendance
+                </template>
+
+                <template v-else-if="reports">
+                    Reports
+                </template>
+
+                <template v-else-if="fAttendance">
+                    Faculty Attendance
+                </template>
+
+                <template v-else-if="marks">
+                    Marks
+                </template>
+
+                <template v-else-if="fa">
+                    FA List
+                </template>
+
+                <template v-else-if="ts">
+                    Today's Schedule
+                </template>
+
+                <template v-else-if="tt">
+                    My Timetable
+                </template>
+
+                <template v-else-if="ctt">
+                    My Class Timetable
+                </template>
             </div>
         </div>
     </div>
@@ -123,14 +128,101 @@
                     phone_number: '',
                     display: '',
                 },
-
+                sAttendance: true,
+                reports: '',
+                fAttendance: '',
+                marks: '',
+                fa: '',
+                ts: '',
+                tt: '',
+                ctt: ''            
             }
         },
+        
 
         layout: 'nav',
 
         methods: {
-            
+            sAttendanceX() {
+                this.sAttendance = true
+                this.reports = false
+                this.fAttendance = false
+                this.marks = false
+                this.fa = false
+                this.ts = false
+                this.tt = false
+                this.ctt = false
+            },
+            reportsX() {
+                this.sAttendance = false
+                this.reports = true
+                this.fAttendance = false
+                this.marks = false
+                this.fa = false
+                this.ts = false
+                this.tt = false
+                this.ctt = false
+            },
+            fAttendanceX() {
+                this.sAttendance = false
+                this.reports = false
+                this.fAttendance = true
+                this.marks = false
+                this.fa = false
+                this.ts = false
+                this.tt = false
+                this.ctt = false
+            },
+            marksX() {
+                this.sAttendance = false
+                this.reports = false
+                this.fAttendance = false
+                this.marks = true
+                this.fa = false
+                this.ts = false
+                this.tt = false
+                this.ctt = false
+            },
+            faX() {
+                this.sAttendance = false
+                this.reports = false
+                this.fAttendance = false
+                this.marks = false
+                this.fa = true
+                this.ts = false
+                this.tt = false
+                this.ctt = false
+            },
+            tsX() {
+                this.sAttendance = false
+                this.reports = false
+                this.fAttendance = false
+                this.marks = false
+                this.fa = false
+                this.ts = true
+                this.tt = false
+                this.ctt = false
+            },
+            ttX() {
+                this.sAttendance = false
+                this.reports = false
+                this.fAttendance = false
+                this.marks = false
+                this.fa = false
+                this.ts = false
+                this.tt = true
+                this.ctt = false
+            },
+            cttX() {
+                this.sAttendance = false
+                this.reports = false
+                this.fAttendance = false
+                this.marks = false
+                this.fa = false
+                this.ts = false
+                this.tt = false
+                this.ctt = true
+            }
         },
 
         created() {
