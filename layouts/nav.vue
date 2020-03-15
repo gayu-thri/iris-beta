@@ -27,9 +27,9 @@
 
                     </a> -->
 
-                    <a class="navbar-item">
-                        About Us
-                    </a>
+                    <nuxt-link to="/about" class="navbar-item">
+                        About
+                    </nuxt-link>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">

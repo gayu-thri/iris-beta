@@ -89,7 +89,7 @@
             this.password = ''
             this.notif = 'is-success'
             this.msg = "Login Successful! Redirecting to Profile"
-            setTimeout(() => this.$router.push('/profile_edit'), 5000)
+            setTimeout(() => this.$router.push('/profile'), 4000)
         })
         .catch(err => {
             this.notif = 'is-danger'
