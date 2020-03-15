@@ -122,7 +122,8 @@
                     email: '',
                     phone_number: '',
                     display: '',
-                }
+                },
+                
             }
         },
 

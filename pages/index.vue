@@ -104,7 +104,6 @@
 
 <style>
 
-
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -126,10 +125,6 @@
 .links {
   padding-top: 15px;
 }
-/* 
-input {
-  border:
-} */
 
 .redirect {
   margin-bottom: 3rem;
