@@ -8,7 +8,12 @@ async function dmp()
     .build()
 
     await driver.get('https://nostalgic-mccarthy-58e272.netlify.com/profile')
+    var millisecondsToWait = 8000;
+setTimeout(function() {
+    // Whatever you want to do after the wait
+}, millisecondsToWait);
 
+    await driver.manage().window().maximize();
     await(await driver.findElement(By.xpath('/html/body/div/div/div/div/div/div[1]/aside/ul/li[2]/a'))).click()
 
     await driver.findElement(By.xpath('/html/body/div/div/div/div/div/div[2]/div/div/div/form/h1/input')).sendKeys('SaiHarsha B')
