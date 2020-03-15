@@ -8,7 +8,12 @@ async function scroll(){
    
     await driver.get('https://nostalgic-mccarthy-58e272.netlify.com/profile')
 //give waitttt hereeeee
+var millisecondsToWait = 8000;
+setTimeout(function() {
+    // Whatever you want to do after the wait
+}, millisecondsToWait);
 
+    await driver.manage().window().maximize();
 setTimeout(timeout,4000);
 function timeout() 
 {
