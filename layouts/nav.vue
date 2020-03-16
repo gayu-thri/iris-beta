@@ -29,11 +29,11 @@
                         To-Do List
                     </nuxt-link>
 
-                    <nuxt-link to="/about" class="navbar-item">
-                        About
+                    <nuxt-link to="/help" class="navbar-item">
+                        Help
                     </nuxt-link>
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <!-- <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                     More
                     </a>
@@ -53,7 +53,7 @@
                         Report an issue
                     </a>
                     </div>
-                </div>
+                </div> -->
                 </div>
 
                 <div class="navbar-end">

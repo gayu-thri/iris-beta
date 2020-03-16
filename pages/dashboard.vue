@@ -22,7 +22,7 @@
                         <strong>Time Table</strong>
                     </p>
                     <ul class="menu-list">
-                        <li @click="tsX"><a>View Today's Schedule</a></li>
+                        <!-- <li @click="tsX"><a>View Today's Schedule</a></li> -->
                         <li @click="ttX"><a>My Timetable</a></li>
                         <li @click="cttX"><a>My Class Timetable</a></li>
                     </ul>
@@ -51,9 +51,9 @@
                     FA List
                 </template>
 
-                <template v-else-if="ts">
+                <!-- <template v-else-if="ts">
                     Today's Schedule
-                </template>
+                </template> -->
 
                 <template v-else-if="tt">
                     <h1 class="title has-text-centered">My Timetable</h1>
