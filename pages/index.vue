@@ -38,7 +38,7 @@
               <nuxt-link to="/forgot-password">Forgot Password?</nuxt-link>
             </div>
             <div class="control">
-              <button class="button is-success is-outlined is-light is-rounded is-medium is-fullwidth login" type="submit">Log In 🔐</button>
+              <button class="button is-danger is-outlined is-rounded is-medium is-fullwidth login" type="submit">Log In 🔐</button>
             </div>
           </form>
 
