@@ -56,11 +56,98 @@
                 </template>
 
                 <template v-else-if="tt">
-                    My Timetable
+                    <h1 class="title has-text-centered">My Timetable</h1>
+                    <form class="columns" @submit.prevent="displayTT">
+                        <div class="column is-one-fourth">
+
+                        </div>
+                        <div class="control column is-one-fourth">
+                            <div class="select is-fullwidth is-info is-rounded">
+                                <select name="year" v-model="year">
+                                    <option selected>Select the year 😄</option>
+                                    <option>2016</option>
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                    <option>2019</option>                              
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-one-fourth">
+                            <button type="submit" class="button is-fullwidth is-rounded is-success is-light is-outlined">View Timetable! 👀</button>
+                        </div>
+                        
+                        <div class="column is-one-fourth">
+
+                        </div>
+                    </form>
+                    
+                    <template v-if="tyear==='2016'">
+                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2018_19_E_30122635.pdf" type="application/pdf" width="100%" height="100%">
+                        </object>
+                    </template>
+
+                    <template v-else-if="tyear==='2017'">
+                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2018_19_O_30122635.pdf" type="application/pdf" width="100%" height="100%">
+                        </object>
+                    </template>
+
+                    <template v-else-if="tyear==='2018'">
+                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2019_20_E_30122635.pdf" type="application/pdf" width="100%" height="100%">
+                        </object>
+                    </template>
+
+                    <template v-else-if="tyear==='2019'">
+                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2019_20_O_30122635.pdf" type="application/pdf" width="100%" height="100%">
+                        </object>
+                    </template>
+
                 </template>
 
                 <template v-else-if="ctt">
-                    My Class Timetable
+                    <h1 class="title has-text-centered">My Class Timetable</h1>
+
+                    <form @submit.prevent="displayCTT" class="columns">
+                        <div class="column is-one-fourth">
+
+                        </div>
+                        <div class="control column is-one-fourth">
+                            <div class="select is-fullwidth is-info is-rounded">
+                                <select class="is-medium" name="classr" v-model="classr">
+                                    <option>Select the class 😄</option>
+                                    <option>19-CSE-F</option>
+                                    <option>18-CSE-E</option>
+                                    <option>17-CSE-A</option>
+                                    <option>18-CSE-B</option>                              
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-one-fourth">
+                            <button type="submit" class="button is-fullwidth is-rounded is-success">View Timetable! 👀</button>
+                        </div>
+                        <div class="column is-one-fourth">
+
+                        </div>
+                    </form>
+                    
+                    <template v-if="tclassr==='19-CSE-F'">
+                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2018_19_E_30122635.pdf" type="application/pdf" width="100%" height="100%">
+                        </object>
+                    </template>
+
+                    <template v-else-if="tclassr==='18-CSE-E'">
+                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2018_19_O_30122635.pdf" type="application/pdf" width="100%" height="100%">
+                        </object>
+                    </template>
+
+                    <template v-else-if="tclassr==='17-CSE-A'">
+                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2019_20_E_30122635.pdf" type="application/pdf" width="100%" height="100%">
+                        </object>
+                    </template>
+
+                    <template v-else-if="tclassr==='18-CSE-B'">
+                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2019_20_O_30122635.pdf" type="application/pdf" width="100%" height="100%">
+                        </object>
+                    </template>
                 </template>
             </div>
         </div>
@@ -135,7 +222,11 @@
                 fa: '',
                 ts: '',
                 tt: '',
-                ctt: ''            
+                ctt: '',
+                year: '',
+                tyear: '',
+                classr: '',
+                tclassr: ''
             }
         },
         
@@ -143,6 +234,14 @@
         layout: 'nav',
 
         methods: {
+            displayTT() {
+                this.tyear = this.year
+            },
+
+            displayCTT() {
+                this.tclassr = this.classr
+            },
+
             sAttendanceX() {
                 this.sAttendance = true
                 this.reports = false
