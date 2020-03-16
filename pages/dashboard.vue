@@ -8,15 +8,15 @@
                     </p>
                     <ul class="menu-list">
                         <li @click="sAttendanceX"><a>Attendance</a></li>
-                        <li @click="reportsX"><a>Reports</a></li>
+                        <!--<li @click="reportsX"><a>Reports</a></li>-->
                     </ul>
                     <p class="menu-label is-size-6">
                         <strong>Faculty</strong>
                     </p>
                     <ul class="menu-list">
                         <li @click="fAttendanceX"><a>Attendance</a></li>
-                        <li @click="marksX"><a>Marks</a></li>
-                        <li @click="faX"><a>FA Warning</a></li>
+                        <!--<li @click="marksX"><a>Marks</a></li>
+                        <li @click="faX"><a>FA Warning</a></li>-->
                     </ul>
                     <p class="menu-label is-size-6">
                         <strong>Time Table</strong>
@@ -33,6 +33,21 @@
 
                 <template v-if="sAttendance">
                     Student Attendance
+                    <div class="column is-one-fourth">
+
+                        </div>
+                        <div class="control column is-one-fourth">
+                            <div class= "is-fullwidth is-info is-rounded">
+                                <input class="input is-info is-family-monospace" name="aemail" placeholder="Your email ID, please 😄" type="aemail" v-model="email">
+                            </div>
+                        </div>
+                        <div class="column is-one-fourth">
+                            <a href="https://iris-faculty-timetable.s3.amazonaws.com/faculty_report-Mon+Mar+16+2020+04_36_06+GMT%2B0000+(Coordinated+Universal+Time).xlsx">View Student Attendance! 👀 </a>
+                        </div>
+                        
+                        <div class="column is-one-fourth">
+
+                        </div>
                 </template>
 
                 <template v-else-if="reports">
@@ -41,6 +56,23 @@
 
                 <template v-else-if="fAttendance">
                     Faculty Attendance
+                    <!--<form class="columns">-->
+                        <div class="column is-one-fourth">
+
+                        </div>
+                        <div class="control column is-one-fourth">
+                            <div class= "is-fullwidth is-info is-rounded">
+                                <input class="input is-info is-family-monospace" name="aemail" placeholder="Your email ID, please 😄" type="aemail" v-model="email">
+                            </div>
+                        </div>
+                        <div class="column is-one-fourth">
+                            <a href="https://iris-faculty-timetable.s3.amazonaws.com/faculty_report-Mon+Mar+16+2020+04_36_06+GMT%2B0000+(Coordinated+Universal+Time).xlsx">View Attendance! 👀 </a>
+                        </div>
+                        
+                        <div class="column is-one-fourth">
+
+                        </div>
+                    <!--</form>-->
                 </template>
 
                 <template v-else-if="marks">
@@ -234,6 +266,23 @@
         layout: 'nav',
 
         methods: {
+
+            // downloadATT() {
+            //     this.$axios.post("http://3.88.223.217:8083/download_faculty_attendance_report", {
+            //         email: 'srishilesh@gmail.com'
+            //     })
+            //     .then(() => {
+            //         console.log("success!")
+            //     })
+            //     .catch(err => {
+            //         console.log(err)
+            //     })
+            // },
+
+            // downloadATT() {
+            //     this.$router.push("https://iris-faculty-timetable.s3.amazonaws.com/faculty_report-Mon+Mar+16+2020+04_36_06+GMT%2B0000+(Coordinated+Universal+Time).xlsx")
+            // },
+
             displayTT() {
                 this.tyear = this.year
             },
