@@ -1,8 +1,10 @@
 <template>
-    <div class="container">
+    <div>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a href="#" class="is-size-3 is-family-secondary navbar-item">🚀iris</a>
+                <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -21,19 +23,15 @@
                         Profile
                     </nuxt-link>
 
-                    <nuxt-link to="/notifications" class="navbar-item">
-                        Notifications
+                    <!-- <a class="navbar-item">
+
+                    </a> -->
+
+                    <nuxt-link to="/about" class="navbar-item">
+                        About
                     </nuxt-link>
 
-                    <nuxt-link to="/to-do" class="navbar-item">
-                        To-Do List
-                    </nuxt-link>
-
-                    <nuxt-link to="/help" class="navbar-item">
-                        Help
-                    </nuxt-link>
-
-                <!-- <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                     More
                     </a>
@@ -53,7 +51,7 @@
                         Report an issue
                     </a>
                     </div>
-                </div> -->
+                </div>
                 </div>
 
                 <div class="navbar-end">
@@ -67,7 +65,6 @@
                 </div>
             </div>
         </nav>
-        <br>
         <nuxt />
     </div>
 </template>

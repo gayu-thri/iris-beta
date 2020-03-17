@@ -86,7 +86,7 @@
                                         <p class="pad">Hint: You can only edit your name, address and date of birth.</p>
                                         <div class="control">
                                             <button type="submit"
-                                            class="button is-rounded is-light is-success is-outlined is-medium is-family-monospace">Update Profile</button>
+                                            class="button is-rounded is-medium is-family-monospace" style="margin-top: 2.5rem;">Submit</button>
                                         </div>
                                     </div>
                                 </form>
