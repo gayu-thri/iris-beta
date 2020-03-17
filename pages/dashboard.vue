@@ -7,180 +7,56 @@
                         <strong>Student</strong>
                     </p>
                     <ul class="menu-list">
-                        <li @click="sAttendanceX"><a>Attendance</a></li>
-                        <!--<li @click="reportsX"><a>Reports</a></li>-->
+                        <li><a>Team Settings</a></li>
+                        <li>
+                            <a class="">Manage Your Team</a>
+                            <ul>
+                                <li><a>Members</a></li>
+                                <li><a>Plugins</a></li>
+                                <li><a>Add a member</a></li>
+                            </ul>
+                        </li>
+                        <li><a>Invitations</a></li>
                     </ul>
                     <p class="menu-label is-size-6">
                         <strong>Faculty</strong>
                     </p>
                     <ul class="menu-list">
-                        <li @click="fAttendanceX"><a>Attendance</a></li>
-                        <!--<li @click="marksX"><a>Marks</a></li>
-                        <li @click="faX"><a>FA Warning</a></li>-->
-                    </ul>
-                    <p class="menu-label is-size-6">
-                        <strong>Time Table</strong>
-                    </p>
-                    <ul class="menu-list">
-                        <!-- <li @click="tsX"><a>View Today's Schedule</a></li> -->
-                        <li @click="ttX"><a>My Timetable</a></li>
-                        <li @click="cttX"><a>My Class Timetable</a></li>
+                        <li><a>Payments</a></li>
+                        <li><a>Transfers</a></li>
+                        <li><a>Balance</a></li>
                     </ul>
                 </aside>
             </div>
             
-            <div class="column" id="dash">
-
-                <template v-if="sAttendance">
-                    Student Attendance
-                    <div class="column is-one-fourth">
-
-                        </div>
-                        <div class="control column is-one-fourth">
-                            <div class= "is-fullwidth is-info is-rounded">
-                                <input class="input is-info is-family-monospace" name="aemail" placeholder="Your email ID, please 😄" type="aemail" v-model="email">
+            <div class="column" id="profile">
+                <div class="container">
+                    <div class="media">
+                        <div class="media-content">
+                            <h1 class="is-size-1 is-family-secondary"> {{ userData.name }} &nbsp;
+                                <nuxt-link class="is-size-3 is-hidden-tablet" to="/edit-profile">✏️
+                                </nuxt-link>
+                            </h1>
+                            <div class="content is-size-5 is-family-monospace">
+                                <div class="media">
+                                    <div class="media-left">💂 Gender:</div>
+                                    <div class="media-content">{{ userData.gender }}</div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left"> 📧 Email:</div>
+                                    <div class="media-content">{{ userData.email }}</div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left">☎️ Phone:</div>
+                                    <div class="media-content">{{ userData.phone_number }}</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="column is-one-fourth">
-                            <a href="https://iris-faculty-timetable.s3.amazonaws.com/faculty_report-Mon+Mar+16+2020+04_36_06+GMT%2B0000+(Coordinated+Universal+Time).xlsx">View Student Attendance! 👀 </a>
-                        </div>
-                        
-                        <div class="column is-one-fourth">
-
-                        </div>
-                </template>
-
-                <template v-else-if="reports">
-                    Reports
-                </template>
-
-                <template v-else-if="fAttendance">
-                    Faculty Attendance
-                    <!--<form class="columns">-->
-                        <div class="column is-one-fourth">
-
-                        </div>
-                        <div class="control column is-one-fourth">
-                            <div class= "is-fullwidth is-info is-rounded">
-                                <input class="input is-info is-family-monospace" name="aemail" placeholder="Your email ID, please 😄" type="aemail" v-model="email">
-                            </div>
-                        </div>
-                        <div class="column is-one-fourth">
-                            <a href="https://iris-faculty-timetable.s3.amazonaws.com/faculty_report-Mon+Mar+16+2020+04_36_06+GMT%2B0000+(Coordinated+Universal+Time).xlsx">View Attendance! 👀 </a>
-                        </div>
-                        
-                        <div class="column is-one-fourth">
-
-                        </div>
-                    <!--</form>-->
-                </template>
-
-                <template v-else-if="marks">
-                    Marks
-                </template>
-
-                <template v-else-if="fa">
-                    FA List
-                </template>
-
-                <!-- <template v-else-if="ts">
-                    Today's Schedule
-                </template> -->
-
-                <template v-else-if="tt">
-                    <h1 class="title has-text-centered">My Timetable</h1>
-                    <form class="columns" @submit.prevent="displayTT">
-                        <div class="column is-one-fourth">
-
-                        </div>
-                        <div class="control column is-one-fourth">
-                            <div class="select is-fullwidth is-info is-rounded">
-                                <select name="year" v-model="year">
-                                    <option selected>Select the year 😄</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>                              
-                                </select>
-                            </div>
-                        </div>
-                        <div class="column is-one-fourth">
-                            <button type="submit" class="button is-fullwidth is-rounded is-success is-light is-outlined">View Timetable! 👀</button>
-                        </div>
-                        
-                        <div class="column is-one-fourth">
-
-                        </div>
-                    </form>
-                    
-                    <template v-if="tyear==='2016'">
-                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2018_19_E_30122635.pdf" type="application/pdf" width="100%" height="100%">
-                        </object>
-                    </template>
-
-                    <template v-else-if="tyear==='2017'">
-                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2018_19_O_30122635.pdf" type="application/pdf" width="100%" height="100%">
-                        </object>
-                    </template>
-
-                    <template v-else-if="tyear==='2018'">
-                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2019_20_E_30122635.pdf" type="application/pdf" width="100%" height="100%">
-                        </object>
-                    </template>
-
-                    <template v-else-if="tyear==='2019'">
-                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2019_20_O_30122635.pdf" type="application/pdf" width="100%" height="100%">
-                        </object>
-                    </template>
-
-                </template>
-
-                <template v-else-if="ctt">
-                    <h1 class="title has-text-centered">My Class Timetable</h1>
-
-                    <form @submit.prevent="displayCTT" class="columns">
-                        <div class="column is-one-fourth">
-
-                        </div>
-                        <div class="control column is-one-fourth">
-                            <div class="select is-fullwidth is-info is-rounded">
-                                <select class="is-medium" name="classr" v-model="classr">
-                                    <option>Select the class 😄</option>
-                                    <option>19-CSE-F</option>
-                                    <option>18-CSE-E</option>
-                                    <option>17-CSE-A</option>
-                                    <option>18-CSE-B</option>                              
-                                </select>
-                            </div>
-                        </div>
-                        <div class="column is-one-fourth">
-                            <button type="submit" class="button is-fullwidth is-rounded is-success">View Timetable! 👀</button>
-                        </div>
-                        <div class="column is-one-fourth">
-
-                        </div>
-                    </form>
-                    
-                    <template v-if="tclassr==='19-CSE-F'">
-                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2018_19_E_30122635.pdf" type="application/pdf" width="100%" height="100%">
-                        </object>
-                    </template>
-
-                    <template v-else-if="tclassr==='18-CSE-E'">
-                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2018_19_O_30122635.pdf" type="application/pdf" width="100%" height="100%">
-                        </object>
-                    </template>
-
-                    <template v-else-if="tclassr==='17-CSE-A'">
-                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2019_20_E_30122635.pdf" type="application/pdf" width="100%" height="100%">
-                        </object>
-                    </template>
-
-                    <template v-else-if="tclassr==='18-CSE-B'">
-                        <object data="https://iris-faculty-timetable.s3.amazonaws.com/2019_20_O_30122635.pdf" type="application/pdf" width="100%" height="100%">
-                        </object>
-                    </template>
-                </template>
+                    </div>
+                    <div class="media-right is-hidden-mobile">
+                        <nuxt-link class="is-size-3" to="/edit-profile">✏️</nuxt-link>
+                    </div>
+                </div>       
             </div>
         </div>
     </div>
@@ -246,131 +122,14 @@
                     email: '',
                     phone_number: '',
                     display: '',
-                },
-                sAttendance: true,
-                reports: '',
-                fAttendance: '',
-                marks: '',
-                fa: '',
-                ts: '',
-                tt: '',
-                ctt: '',
-                year: '',
-                tyear: '',
-                classr: '',
-                tclassr: ''
+                }
             }
         },
-        
 
         layout: 'nav',
 
         methods: {
-
-            // downloadATT() {
-            //     this.$axios.post("http://3.88.223.217:8083/download_faculty_attendance_report", {
-            //         email: 'srishilesh@gmail.com'
-            //     })
-            //     .then(() => {
-            //         console.log("success!")
-            //     })
-            //     .catch(err => {
-            //         console.log(err)
-            //     })
-            // },
-
-            // downloadATT() {
-            //     this.$router.push("https://iris-faculty-timetable.s3.amazonaws.com/faculty_report-Mon+Mar+16+2020+04_36_06+GMT%2B0000+(Coordinated+Universal+Time).xlsx")
-            // },
-
-            displayTT() {
-                this.tyear = this.year
-            },
-
-            displayCTT() {
-                this.tclassr = this.classr
-            },
-
-            sAttendanceX() {
-                this.sAttendance = true
-                this.reports = false
-                this.fAttendance = false
-                this.marks = false
-                this.fa = false
-                this.ts = false
-                this.tt = false
-                this.ctt = false
-            },
-            reportsX() {
-                this.sAttendance = false
-                this.reports = true
-                this.fAttendance = false
-                this.marks = false
-                this.fa = false
-                this.ts = false
-                this.tt = false
-                this.ctt = false
-            },
-            fAttendanceX() {
-                this.sAttendance = false
-                this.reports = false
-                this.fAttendance = true
-                this.marks = false
-                this.fa = false
-                this.ts = false
-                this.tt = false
-                this.ctt = false
-            },
-            marksX() {
-                this.sAttendance = false
-                this.reports = false
-                this.fAttendance = false
-                this.marks = true
-                this.fa = false
-                this.ts = false
-                this.tt = false
-                this.ctt = false
-            },
-            faX() {
-                this.sAttendance = false
-                this.reports = false
-                this.fAttendance = false
-                this.marks = false
-                this.fa = true
-                this.ts = false
-                this.tt = false
-                this.ctt = false
-            },
-            tsX() {
-                this.sAttendance = false
-                this.reports = false
-                this.fAttendance = false
-                this.marks = false
-                this.fa = false
-                this.ts = true
-                this.tt = false
-                this.ctt = false
-            },
-            ttX() {
-                this.sAttendance = false
-                this.reports = false
-                this.fAttendance = false
-                this.marks = false
-                this.fa = false
-                this.ts = false
-                this.tt = true
-                this.ctt = false
-            },
-            cttX() {
-                this.sAttendance = false
-                this.reports = false
-                this.fAttendance = false
-                this.marks = false
-                this.fa = false
-                this.ts = false
-                this.tt = false
-                this.ctt = true
-            }
+            
         },
 
         created() {
