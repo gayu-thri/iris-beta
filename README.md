@@ -1,6 +1,7 @@
 # Iris - Faculty Dashboard ([Link](http://nostalgic-mccarthy-58e272.netlify.com/))
 
-Project done as a part of Software Engineering course 15CSE313
+Project done as a part of Software Engineering course 15CSE313  
+[View Full Report](https://github.com/srishilesh/iris-beta/blob/master/CSE_E_Faculty_Dashboard_Iris_Report_2020.pdf)
 
 ## Introduction
 
