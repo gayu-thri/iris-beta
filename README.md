@@ -76,5 +76,5 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 [Srishilesh P S](https://github.com/srishilesh) - Backend functionality, Unit testing, Static code analysis, CI/CD  
 [Sanjay Tharagesh R S](https://github.com/sanjaytharagesh31) - Backend functionality, Unit testing, Static code analysis, Database  
 [Gayathri E](https://github.com/gayu-thri) - UI testing  
-[Prathyusha S](https://github.com/prathyu0398) - UI testing  
+[Prathyusha I](https://github.com/prathyu0398) - UI testing  
 [Neeraj Kumar Reddy P](https://github.com/Neeraj441) - Unit testing  
